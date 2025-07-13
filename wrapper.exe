@@ -1,0 +1,16 @@
+// windows_launcher.cpp
+#include <cstdlib>
+#include <iostream>
+
+int main(int argc, char** argv) {
+    if (argc < 7) {
+        std::cerr << "Usage: wrapper.exe --genbank <file> --fasta <file> --out <file>\n";
+        return 1;
+    }
+    std::string cmd = "python wrapper.py";
+    for (int i = 1; i < argc; ++i) {
+        cmd += " ";
+        cmd += argv[i];
+    }
+    return std::system(cmd.c_str());
+}
